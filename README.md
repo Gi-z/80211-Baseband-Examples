@@ -14,12 +14,16 @@ While the impact of these inconsistencies is usually minor, for research purpose
 
 \*: Must be capable of Tx at 2.4GHz/5GHz, with a bandwidth of at least 20MHz. 
 
+## Setup
+
+pybombs stuff
+
 ## Usage
 
 Test your configuration by transmitting a beacon frame:
 
 ```console
-python tx_{bladeRF/uhd/hackRF}.py --freq 2412m --repeat --delay 100
+python tx_{bladeRF/uhd/hackRF/soapy}.py --freq 2412m --repeat --delay 100
 ```
 
 Once you've confirmed you can transmit the default example, specify a sample from the relevant samples directory, like so:
