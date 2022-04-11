@@ -25,7 +25,7 @@ python tx_{bladeRF/uhd/hackRF}.py --freq 2412m --repeat --delay 100
 Once you've confirmed you can transmit the default example, specify a sample from the relevant samples directory, like so:
 
 ```console
-python tx_bladeRF.py --freq 2412m --repeat --delay 100 samples/bladeRF/HT/beacon_mcs4_sgi.raw
+python tx_bladeRF.py --freq 2412m --repeat --delay 100 samples/HT/beacon_mcs4_sgi.raw
 ```
 
 ## Customisation
