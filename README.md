@@ -16,7 +16,7 @@ While the impact of these inconsistencies is usually minor, for research purpose
 
 ## Setup
 
-pybombs stuff
+These scripts require a working GNU Radio (3.8+) installation. The easiest way to install GNU Radio is with [pybombs](https://github.com/gnuradio/pybombs).
 
 ## Usage
 
