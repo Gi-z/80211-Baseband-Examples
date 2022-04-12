@@ -23,7 +23,7 @@ These scripts require a working GNU Radio (3.8+) installation. The easiest way t
 Test your configuration by transmitting a beacon frame:
 
 ```console
-python tx_{bladeRF/uhd/hackRF/soapy}.py --freq 2412m
+python tx_{bladeRF/uhd/hackRF}.py --freq 2412m
 ```
 
 Once you've confirmed you can transmit the default example, specify a sample from the relevant samples directory, like so:
