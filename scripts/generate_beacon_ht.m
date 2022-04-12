@@ -8,7 +8,7 @@ function generate_beacon_ht(varargin)
 
     % wlanNonHTConfig options
     addParameter(p, 'MCS', 0);
-    addParameter(p, 'ShortGuardInterval', false, @isboolean);
+    addParameter(p, 'ShortGuardInterval', false);
 
     % wlanMACFrameConfig options
     addParameter(p, 'BSSID', "0016EA123456", @isstring);
@@ -31,7 +31,9 @@ function generate_beacon_ht(varargin)
     
     % Beacon specifics.
     %config.BeaconInterval = 100; % number of time units (1TU = 1024us)
-    config = config.addIE(3, dec2hex(p.Results.WLANChannel, 2)); % 802.11 WLAN channel in hex
+    config = config.addIE(3, dec2hex(p.Results.WLANChannel, 2)); 
+        % 802.11 WLAN channel in hex.
+        % Does not have to be correct for devices to parse.
     
     macCfg = wlanMACFrameConfig('FrameType', 'Beacon', "ManagementConfig", config);
     macCfg.FrameFormat = 'HT';
