@@ -16,20 +16,20 @@ While the impact of these inconsistencies is usually minor, for research purpose
 
 ## Setup
 
-pybombs stuff
+These scripts require a working GNU Radio (3.8+) installation. The easiest way to install GNU Radio is with [pybombs](https://github.com/gnuradio/pybombs).
 
 ## Usage
 
 Test your configuration by transmitting a beacon frame:
 
 ```console
-python tx_{bladeRF/uhd/hackRF/soapy}.py --freq 2412m --repeat --delay 100
+python tx_{bladeRF/uhd/hackRF}.py --freq 2412m
 ```
 
 Once you've confirmed you can transmit the default example, specify a sample from the relevant samples directory, like so:
 
 ```console
-python tx_bladeRF.py --freq 2412m --repeat --delay 100 samples/HT/beacon_mcs4_sgi.raw
+python tx_bladeRF.py --freq 2412m samples/HT/beacon_mcs4_sgi.raw
 ```
 
 ## Customisation
