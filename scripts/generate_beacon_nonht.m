@@ -52,5 +52,7 @@ function generate_beacon_nonht(varargin)
         "IdleTime", p.Results.IdleTime ...
     );
     
-    write_complex_binary(txWaveform, p.Results.Filename);
+    scaled_waveform = txWaveform / max(txWaveform);
+    
+    write_complex_binary(scaled_waveform, p.Results.Filename);
 end

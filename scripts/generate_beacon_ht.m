@@ -10,7 +10,7 @@ function generate_beacon_ht(varargin)
     addParameter(p, 'MCS', 0);
     addParameter(p, 'ShortGuardInterval', false);
 
-    % wlanMACFrameConfig options
+    % wlanMACFrameConfig options    
     addParameter(p, 'BSSID', "0016EA123456", @isstring);
     addParameter(p, 'DestAddr', "0016EA123456", @isstring);
     addParameter(p, 'TxAddr', "0016EA123456", @isstring);
@@ -58,6 +58,8 @@ function generate_beacon_ht(varargin)
         "WindowTransitionTime", p.Results.WindowTransitionTime, ...
         "IdleTime", p.Results.IdleTime ...
     );
+
+    scaled_waveform = txWaveform / max(txWaveform);
     
-    write_complex_binary(txWaveform, p.Results.Filename);
+    write_complex_binary(scaled_waveform, p.Results.Filename);
 end
