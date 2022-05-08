@@ -23,13 +23,13 @@ These scripts require a working GNU Radio (3.8+) installation. The easiest way t
 Test your configuration by transmitting a beacon frame:
 
 ```console
-python tx_{bladeRF/uhd/hackRF}.py --freq 2412m
+python tx_{bladeRF/uhd/hackRF}.py --freq 2412e6
 ```
 
 Once you've confirmed you can transmit the default example, specify a sample from the relevant samples directory, like so:
 
 ```console
-python tx_bladeRF.py --freq 2412m samples/HT/beacon_mcs4_sgi.raw
+python tx_bladeRF.py --freq 2412e6 --filename samples/HT/beacon_mcs4_sgi.raw
 ```
 
 ## Customisation
