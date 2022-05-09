@@ -7,8 +7,8 @@ function generate_beacon_ht(varargin)
     addParameter(p, 'WLANChannel', 1);
 
     % wlanNonHTConfig options
-    addParameter(p, 'MCS', 0);
-    addParameter(p, 'ShortGuardInterval', false);
+    addParameter(p, 'MCS', 4);
+    addParameter(p, 'ShortGuardInterval', true);
 
     % wlanMACFrameConfig options    
     addParameter(p, 'BSSID', "0016EA123456", @isstring);
@@ -37,8 +37,9 @@ function generate_beacon_ht(varargin)
     
     macCfg = wlanMACFrameConfig('FrameType', 'Beacon', "ManagementConfig", config);
     macCfg.FrameFormat = 'HT';
-    macCfg.FromDS = 0; % To indicate an "AP" is sending this (Distributed System)
-    macCfg.Address1 = "FFFFFFFFFFFF"; % Receiver addr (Must be FFFF for broadcast)
+%     macCfg.FromDS = 0; % To indicate an "AP" is sending this (Distributed System)
+%     macCfg.Address1 = "FFFFFFFFFFFF"; % Receiver addr (Must be FFFF for broadcast)
+    macCfg.Address1 = p.Results.TxAddr; % Tx
     macCfg.Address2 = p.Results.TxAddr; % Tx
     macCfg.Address3 = p.Results.DestAddr; % Dest
     macCfg.Address4 = p.Results.BSSID; % BSSID
@@ -54,12 +55,12 @@ function generate_beacon_ht(varargin)
     end
     
     txWaveform = wlanWaveformGenerator(mpduBits, cfgHT, ...
-        "NumPackets", p.Results.NumPackets, ...
-        "WindowTransitionTime", p.Results.WindowTransitionTime, ...
-        "IdleTime", p.Results.IdleTime ...
+        "NumPackets", 1, ...
+        "WindowTransitionTime", 0, ...
+        "IdleTime", 1e-4 ...
     );
 
-    scaled_waveform = txWaveform / max(txWaveform);
+    scaled_waveform = (2*(txWaveform / max(txWaveform))) - 1;
     
     write_complex_binary(scaled_waveform, p.Results.Filename);
 end
